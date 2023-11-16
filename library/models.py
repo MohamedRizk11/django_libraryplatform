@@ -15,7 +15,7 @@ class Author(models.Model):
     biography=models.TextField(max_length=1000)
     image = models.ImageField(upload_to='image', default='1.jpg')
     slug=models.SlugField(null=True,blank=True)
-    
+    books = models.ForeignKey('Book', on_delete=models.CASCADE, related_name='author_books')
     def __str__(self):
         return self.name
     def save(self, *args, **kwargs):
